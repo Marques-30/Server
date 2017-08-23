@@ -1,0 +1,64 @@
+body { 
+font-family: sans-serif; 
+background-color: background: linear-gradient(red, yellow);
+background-repeat: no-repeat;
+background-image: 'maxresdefault.jpg';
+}
+
+ h1, h2, h3, h4 { 
+ color: #CCCCCC; 
+ }
+
+h1, h2 { 
+font-family: 'Georgia', 
+serif; margin: 0; 
+}
+
+h1 { 
+border-bottom: 2px solid #eee;
+}
+
+h2 {
+font-size: 1.2em; 
+}
+
+p { 
+color: white;
+}
+
+a {
+	text-decoration: underline; 
+	color: black;
+}
+
+.pane {
+position:absolute; 
+left: 25%; 
+border: 2px solid;
+border-radius: 25px; 
+padding: 5px; 
+margin: 5px; 
+border-color: #999999; 
+background-color: linear-gradient(to bottom right, red, transparent); 
+}
+
+.header {
+left:50%; 
+text-align: center;
+}
+
+.name {
+width:50%;
+display: inline-block; 
+float: left;
+}
+
+.price {
+text-align: right; 
+width:50%; 
+float: right; 
+}
+
+.flash {
+ background: #cee5F5; 
+}
