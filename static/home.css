@@ -4,6 +4,7 @@ background: linear-gradient(to top right, red, purple, blue);
 background-repeat: no-repeat;
 background-image: url("maxresdefault.jpg");
 background-size: 100% 100%;
+color: white;
 }
 
  h1, h2, h3, h4 { 

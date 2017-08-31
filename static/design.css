@@ -1,6 +1,10 @@
 body { 
 	font-family: sans-serif; 
+	color: white;
 	background: linear-gradient(to top right, red, purple, blue);
+	background-repeat: no-repeat;
+	background-image: url("hedge.jpg");
+	background-size: 100% 100%;
 }
 
  h1, h2, h3, h4 { 
@@ -36,6 +40,7 @@ a {
 	margin: 5px; 
 	border-color: #999999;
 	float: right;
+	background-image: url("cake.jpg");
 }
 
 .pane {
