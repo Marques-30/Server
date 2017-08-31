@@ -1,15 +1,16 @@
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='home.css')}}">
 </head>
 <body>
 <h1>Edit Restaurant</h1>
+<div style="background-color:rgba(0, 0, 0, 0.5); border-radius: 25px;">
 <form action="#" method='post'>
 <p>Name: </p>
 <input type="text" size='30' name='name'><br><br>
 <input type='submit' value='Edit'>
 <a href="{{url_for('showAll')}}">Cancel</a>
 </form>
-
+</div>
 </body>
 </html>

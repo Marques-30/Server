@@ -1,12 +1,15 @@
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='home.css')}}">
 </head>
 <body>
-<h1>Are you sure you want to delete {{item.name}}?</h1>
+<h2>Are you sure you want to delete {{item.name}}?</h2><hr>
+<br><br>
+<div style="background-color:rgba(0, 0, 0, 0.5); border-radius: 25px;">
 <form action="#" method='post'>
 <input type="submit" value='Delete'>
 </form>
-<a href="{{url_for('Menu', restaurant_id=restaurant.id)}}">Cancel</a>
+<a href="{{url_for('Menu', restaurant_id=restaurant_id)}}">Cancel</a>
+</div>
 </body>
 </html>

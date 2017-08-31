@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+		<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='design.css')}}">
 	</head>
 	<body>
 		<div class='pane'>
@@ -16,7 +16,9 @@
 		{% endwith %}
 		{% if items !=[] %}
 		<a href="{{url_for('Menu_new', restaurant_id=restaurant.id)}}">Create New Item</a>
+		<a href="{{url_for('showAll')}}">Home page</a>
 		<br><br>
+		<div style="float: left; padding: 25px;">
 			<h2>Appetizers</h2>
 				{% for i in items %}
 				{% if i.course == 'Appetizer' %}
@@ -28,6 +30,8 @@
 				<br>
 				{% endif %}
 				{% endfor %}
+			</div>
+			<div style="float: left; padding: 25px;">
 			<h2>Entrees</h2>
 				{% for i in items %}
 				{% if i.course == 'Entrees' %}
@@ -39,7 +43,8 @@
 				<br>
 				{% endif %}
 				{% endfor %}
-			<br><br>
+			</div>
+			<div style="float: left; padding: 25px;">
 			<h2>Desserts</h2>
 				{% for i in items %}
 				{% if i.course == 'Desserts' %}
@@ -51,7 +56,8 @@
 				<br>
 				{%endif%}
 				{% endfor %}
-			<br><br>
+			</div>
+			<div style="float: left; padding: 25px;">
 			<h2>Beverages</h2>
 				{% for i in items %}
 				{% if i.course == 'Beverage' %}
@@ -67,6 +73,7 @@
 				<p>You currently have no menu items</p>
 				<a href="{{url_for('Menu_new', restaurant_id=restaurant.id)}}"></a>
 				{% endif %}
+			</div>
 		</div>
 	</body>
 </html>

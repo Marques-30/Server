@@ -1,16 +1,25 @@
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='design.css')}}">
 </head>
 <body>
-<div class='pane'>
-<h1>Restaurants</h1>
-<a href="{{url_for('New')}}"><h3>Create a New Resturant</h3></a>
-{% for restaurant in restaurants %}
-<a href="{{url_for('Menu', restaurant_id=restaurant.id)}}"><p>{{restaurant.name}}</p></a>
-<a href="{{url_for('Edit', restaurant_id = restaurant.id)}}">Edit Restaurant</a><br>
-<a href="{{url_for('Delete', restaurant_id = restaurant.id)}}">Delete Restaurants</a><br>
-{% endfor %}
-</div>
+<div class="row top-menu">
+		<div class="col-md-10"></div>
+		<div class="col-md-2 text-right">
+			<h1>Restaurants</h1><a href="{{url_for('showLogin')}}" style="float: right;">Click Here to Log in </a>
+			<hr><br>
+		</div>
+	</div>
+	<div class='pane'>
+		<a href="{{url_for('New')}}"><h3>Create a New Resturant</h3></a><br>
+			{% for restaurant in restaurants %}
+		<a href="{{url_for('Menu', restaurant_id=restaurant.id)}}"><p>{{restaurant.name}}</p></a>
+		<a href="{{url_for('Edit', restaurant_id = restaurant.id)}}">Edit Restaurant</a>
+		<a href="{{url_for('Delete', restaurant_id = restaurant.id)}}">Delete Restaurants</a><br><br>
+			{% endfor %}
+	</div>
+	<div class="frame">
+		<p>piture</p>
+	</div>
 </body>
 </html>

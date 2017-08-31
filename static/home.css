@@ -1,8 +1,9 @@
 body { 
 font-family: sans-serif; 
-background-color: background: linear-gradient(red, yellow);
+background: linear-gradient(to top right, red, purple, blue);
 background-repeat: no-repeat;
-background-image: 'maxresdefault.jpg';
+background-image: url("maxresdefault.jpg");
+background-size: 100% 100%;
 }
 
  h1, h2, h3, h4 { 
@@ -39,7 +40,7 @@ border-radius: 25px;
 padding: 5px; 
 margin: 5px; 
 border-color: #999999; 
-background-color: linear-gradient(to bottom right, red, transparent); 
+background: linear-gradient(to bottom right, blue, yellow); 
 }
 
 .header {
