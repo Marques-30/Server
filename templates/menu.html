@@ -5,6 +5,11 @@
 	<body>
 		<div class='pane'>
 		<h1>{{restaurant.name}}</h1>
+		{% if 'username' not in session %}
+			<h1>Restaurants</h1><a href="{{url_for('showLogin')}}" style="float: right;">Click Here to Log in</a>
+			{% else %}
+			<h1>Restaurants</h1><a href="{{url_for('gdisconnect')}}" style="float: right;">Log Out</a>
+			{% endif %}
 		{% with messages = get_flashed_messages() %}
 		{% if messages %}
 		<ul>
