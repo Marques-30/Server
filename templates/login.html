@@ -51,7 +51,7 @@ function signInCallback(authResult) {
         if (result) {
           $('#result').html('Login Successful!</br>'+ result + '</br>Redirecting...')
          setTimeout(function() {
-          window.location.href = "/restaurant";
+          window.location.href = "{{url_for('showAll')}}";
          }, 4000);
           
       } else if (authResult['error']) {
