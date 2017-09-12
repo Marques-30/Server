@@ -16,6 +16,7 @@
 	</div>
 	<div class='pane'>
 		<a href="{{url_for('New')}}"><h3>Create a New Resturant</h3></a>
+			{% with messages = get_flashed_messages() %}
 			{% for restaurant in restaurants %}
 		<a href="{{url_for('Menu', restaurant_id=restaurant.id)}}"><p>{{restaurant.name}}</p></a>
 		<a href="{{url_for('Edit', restaurant_id = restaurant.id)}}">Edit Restaurant</a>

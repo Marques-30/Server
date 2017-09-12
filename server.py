@@ -177,8 +177,7 @@ def gdisconnect():
 
         response = make_response(json.dumps('Successfully disconnected.'), 200)
         response.headers['Content-Type'] = 'application/json'
-        return response
-    return redirect('/restaurants/')
+        return redirect('/restaurants/')
 
 
 @app.route('/restaurants/<int:restaurant_id>/menu/JSON')
@@ -226,10 +225,11 @@ def New():
 @app.route('/restaurants/<int:restaurant_id>/edit/', methods=['GET', 'POST'])
 def Edit(restaurant_id):
     #check for login
-    if 'username' not in login_session:
-        return redirect('/login')
-    #query that adds changes to restaurant name from linking database
     Update = session.query(Restaurant).filter_by(id=restaurant_id).one()
+    if Update.id != login_session['user_id']:
+        flash("You do not have the right access to change %s", restaurant_id)
+        return redirect('/restaurants/')
+    #query that adds changes to restaurant name from linking database
     if request.method == 'POST':
         if request.form['name']:
             Update.name = request.form['name']
@@ -241,10 +241,11 @@ def Edit(restaurant_id):
 @app.route('/restaurants/<int:restaurant_id>/delete/', methods=['GET', 'POST'])
 def Delete(restaurant_id):
     #check for login
-    if 'username' not in login_session:
-        return redirect('/login')
-    #Query that removes restaurants and deletes data from linking database
     Remove = session.query(Restaurant).filter_by(id=restaurant_id).one()
+    if Remove.id != login_session['user_id']:
+        flash("You do not have the right access to change %s", restaurant_id)
+        return redirect('/restaurants/')
+    #Query that removes restaurants and deletes data from linking database
     if request.method == 'POST':
         session.delete(Remove)
         session.commit()
@@ -267,15 +268,16 @@ def Menu(restaurant_id):
            methods=['GET', 'POST'])
 def Menu_new(restaurant_id):
     #check for login
-    if 'username' not in login_session:
-        return redirect('/login')
+    newItem = MenuItem(name=request.form['name'],
+                       description=request.form['description'],
+                       price=request.form['price'],
+                       course=request.form['course'],
+                       restaurant_id=restaurant_id)
+    if 'username' not in login_session or newItem.id != login_session['user_id']:
+        flash("You do not have the right access to change %s", restaurant_id)
+        return redirect('/restaurants/')
     if request.method == 'POST':
         #Query that creates a new menu item for restaurants
-        newItem = MenuItem(name=request.form['name'],
-                           description=request.form['description'],
-                           price=request.form['price'],
-                           course=request.form['course'],
-                           restaurant_id=restaurant_id)
         session.add(newItem)
         session.commit()
         return redirect(url_for('Menu', restaurant_id=restaurant_id))
@@ -287,10 +289,11 @@ def Menu_new(restaurant_id):
            methods=['GET', 'POST'])
 def Menu_edit(restaurant_id, menu_id):
     #check for login
-    if 'username' not in login_session:
-        return redirect('/login')
-    #Query that creates changes into selected restaurant's menu item
     change = session.query(MenuItem).filter_by(id=menu_id).one()
+    if change.id != login_session['user_id']:
+        flash("You do not have the right access to change %s", restaurant_id)
+        return redirect('/restaurants/')
+    #Query that creates changes into selected restaurant's menu item
     if request.method == 'POST':
         if request.form['name']:
             change.name = request.form['name']
@@ -312,10 +315,11 @@ def Menu_edit(restaurant_id, menu_id):
            methods=['GET', 'POST'])
 def Menu_delete(restaurant_id, menu_id):
     #check for login
-    if 'username' not in login_session:
-        return redirect('/login')
-    #Query that deletes data of only the selected menu item
     item_delete = session.query(MenuItem).filter_by(id=menu_id).one()
+    if item_delete.id != login_session['user_id']:
+        flash("You do not have the right access to change %s", restaurant_id)
+        return redirect('/restaurants/')
+    #Query that deletes data of only the selected menu item
     if request.method == 'POST':
         session.delete(item_delete)
         session.commit()
