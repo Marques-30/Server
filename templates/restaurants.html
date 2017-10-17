@@ -22,6 +22,7 @@
 		<a href="{{url_for('Edit', restaurant_id = restaurant.id)}}">Edit Restaurant</a>
 		<a href="{{url_for('Delete', restaurant_id = restaurant.id)}}">Delete Restaurants</a><br><br>
 			{% endfor %}
+			{% endwith %}
 	</div>
 </body>
 </html>
