@@ -59,6 +59,6 @@ class MenuItem(Base):
         }
 
 
-#engine = create_engine('sqlite:///restaurantmenu.db')
-engine = os.environ.get('DATABASE_URL')
+engine = create_engine('sqlite:///restaurantmenu.db')
+#engine = os.environ.get('DATABASE_URL')
 Base.metadata.create_all(engine)

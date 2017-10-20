@@ -332,4 +332,3 @@ def Menu_delete(restaurant_id, menu_id):
 if __name__ == "__main__":
     app.debug = True
     app.run()
-    db.create_all()
